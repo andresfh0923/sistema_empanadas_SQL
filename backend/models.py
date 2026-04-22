@@ -1,13 +1,15 @@
-from .database import Base
+from .database import Base #importación del modelo.
 from sqlalchemy import Column,Integer,String,Enum,Text,TIMESTAMP,func,DECIMAL,ForeignKey
 from sqlalchemy.orm import relationship
+
+#creación de las clases.
 
 class Usuario(Base):
     __tablename__='usuarios'
     id_usuario=Column(Integer,primary_key=True)
     rol=Column(Enum('admin','empleado'),nullable=False,default='empleado')
     nombre=Column(String(100),nullable=False)
-    contrasena=Column(String(255),nullable=False)
+    contrasena=Column(String(255),nullable=False) #string(255) para hacer hash.
 
 
 class Cliente(Base):
